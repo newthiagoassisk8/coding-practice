@@ -9,14 +9,19 @@ function filterByCategory(category) {
     });
     return arr;
 }
-function getFamousYoutubers() {
+function getFamousYoutubers(subscribersCount) {
     let filterdYoutubers = [];
     topBrazilianYouTubersDec2016.map((youtuber) => {
-        if (youtuber.subscribers > 8000000) {
+        if (youtuber.subscribers > subscribersCount) {
             filterdYoutubers.push(youtuber);
         }
     });
     return filterdYoutubers;
 }
-//TODO: escrever testes dessas funções
-console.log(getFamousYoutubers());
+
+function getAllCategories(){
+    return topBrazilianYouTubersDec2016.reduce((acc, valorAtual) => {
+     return acc.concat(valorAtual.channel)
+    },[]); 
+}
+
